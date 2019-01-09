@@ -32,7 +32,11 @@ public class User implements Serializable
 	{
 		this.password = password;
 	}
-
+	
+	public void login()
+	{
+		System.out.println("Bean with the following user name: " + name);
+	}
 	@PostConstruct
 	private void initialize() 
 	{
