@@ -27,7 +27,28 @@ public class I18nBean implements Serializable {
 	private Locale locale = FacesContext.getCurrentInstance().getApplication().getDefaultLocale();
 	private String language;
 	private TimeZone timeZone = TimeZone.getTimeZone("Europe/Brussels");
-
+	
+	// pour récupérer un user ex:
+	/*
+	 * public string Auth()
+	 * {
+	 * Map<String.Object> map; map.put("login",login);
+	 * listUser = ef.namedquery("requestlogin",new User(),map);
+	 * List<user> user;
+	 * if(!listUser.isEmpty())
+	 * {
+	 * 	user = listUser.get(0); 
+	 * }
+	 * 
+	 * (faire les conditions pour vérifier mot de passe si il est bon)
+	 * }
+	 * 
+	 * (dans la vue)
+	 * value="{loginBean.login}
+	 * 
+	 * le submit aurat => value ="{loginBean.auth}"
+	 * */
+	
 	public String selectLanguage() {
 		log.debug("Selected language: " + language);
 		// Update language
