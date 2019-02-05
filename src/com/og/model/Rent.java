@@ -38,9 +38,9 @@ public class Rent implements Serializable {
 	@OneToMany(mappedBy="rent")
 	private List<RentMovie> rentMovies;
 
-	//bi-directional many-to-one association to RentPackage
+	//bi-directional many-to-one association to RentBatch
 	@OneToMany(mappedBy="rent")
-	private List<RentPackage> rentPackages;
+	private List<RentBatch> rentBatches;
 
 	public Rent() {
 	}
@@ -123,26 +123,26 @@ public class Rent implements Serializable {
 		return rentMovy;
 	}
 
-	public List<RentPackage> getRentPackages() {
-		return this.rentPackages;
+	public List<RentBatch> getRentBatches() {
+		return this.rentBatches;
 	}
 
-	public void setRentPackages(List<RentPackage> rentPackages) {
-		this.rentPackages = rentPackages;
+	public void setRentBatches(List<RentBatch> rentBatches) {
+		this.rentBatches = rentBatches;
 	}
 
-	public RentPackage addRentPackage(RentPackage rentPackage) {
-		getRentPackages().add(rentPackage);
-		rentPackage.setRent(this);
+	public RentBatch addRentBatch(RentBatch rentBatch) {
+		getRentBatches().add(rentBatch);
+		rentBatch.setRent(this);
 
-		return rentPackage;
+		return rentBatch;
 	}
 
-	public RentPackage removeRentPackage(RentPackage rentPackage) {
-		getRentPackages().remove(rentPackage);
-		rentPackage.setRent(null);
+	public RentBatch removeRentBatch(RentBatch rentBatch) {
+		getRentBatches().remove(rentBatch);
+		rentBatch.setRent(null);
 
-		return rentPackage;
+		return rentBatch;
 	}
 
 }

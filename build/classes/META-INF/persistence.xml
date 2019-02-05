@@ -4,6 +4,8 @@
 	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 	<jta-data-source>java:comp/env/jdbc/locationmoviesjsf</jta-data-source>
 	<class>com.og.model.Author</class>
+	<class>com.og.model.Batch</class>
+	<class>com.og.model.BatchMovie</class>
 	<class>com.og.model.Bill</class>
 	<class>com.og.model.Category</class>
 	<class>com.og.model.City</class>
@@ -12,13 +14,11 @@
 	<class>com.og.model.Movie</class>
 	<class>com.og.model.MovieAuthor</class>
 	<class>com.og.model.MovieCategory</class>
-	<class>com.og.model.Package</class>
-	<class>com.og.model.PackageMovie</class>
 	<class>com.og.model.Peggi</class>
 	<class>com.og.model.Promotion</class>
 	<class>com.og.model.Rent</class>
+	<class>com.og.model.RentBatch</class>
 	<class>com.og.model.RentMovie</class>
-	<class>com.og.model.RentPackage</class>
 	<class>com.og.model.Role</class>
 	<class>com.og.model.User</class>
 	<class>com.og.model.Year</class>

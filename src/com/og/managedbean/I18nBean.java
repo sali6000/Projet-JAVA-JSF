@@ -9,7 +9,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.ViewHandler;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.log4j.Logger;
@@ -22,7 +21,7 @@ public class I18nBean implements Serializable {
 	
 	// Log4j	 CHANGER LE "I18nBean.class" en mettant le nom de la classe dans lequel il est utilisé
 	// 			 Pour afficher le nom de la classe dans le Debug.Log
-	private Logger log = Logger.getLogger(I18nBean.class);
+	private Logger log = Logger.getLogger(this.getClass());
 	
 	private Locale locale = FacesContext.getCurrentInstance().getApplication().getDefaultLocale();
 	private String language;

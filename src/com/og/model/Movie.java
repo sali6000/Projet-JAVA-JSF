@@ -53,13 +53,13 @@ public class Movie implements Serializable {
 	@OneToMany(mappedBy="movie")
 	private List<MovieCategory> movieCategories;
 
-	//bi-directional many-to-one association to PackageMovie
-	@OneToMany(mappedBy="movie")
-	private List<PackageMovie> packageMovies;
-
 	//bi-directional many-to-one association to RentMovie
 	@OneToMany(mappedBy="movie")
 	private List<RentMovie> rentMovies;
+
+	//bi-directional many-to-one association to BatchMovie
+	@OneToMany(mappedBy="movie")
+	private List<BatchMovie> batchMovies;
 
 	public Movie() {
 	}
@@ -210,28 +210,6 @@ public class Movie implements Serializable {
 		return movieCategory;
 	}
 
-	public List<PackageMovie> getPackageMovies() {
-		return this.packageMovies;
-	}
-
-	public void setPackageMovies(List<PackageMovie> packageMovies) {
-		this.packageMovies = packageMovies;
-	}
-
-	public PackageMovie addPackageMovy(PackageMovie packageMovy) {
-		getPackageMovies().add(packageMovy);
-		packageMovy.setMovie(this);
-
-		return packageMovy;
-	}
-
-	public PackageMovie removePackageMovy(PackageMovie packageMovy) {
-		getPackageMovies().remove(packageMovy);
-		packageMovy.setMovie(null);
-
-		return packageMovy;
-	}
-
 	public List<RentMovie> getRentMovies() {
 		return this.rentMovies;
 	}
@@ -252,6 +230,28 @@ public class Movie implements Serializable {
 		rentMovy.setMovie(null);
 
 		return rentMovy;
+	}
+
+	public List<BatchMovie> getBatchMovies() {
+		return this.batchMovies;
+	}
+
+	public void setBatchMovies(List<BatchMovie> batchMovies) {
+		this.batchMovies = batchMovies;
+	}
+
+	public BatchMovie addBatchMovy(BatchMovie batchMovy) {
+		getBatchMovies().add(batchMovy);
+		batchMovy.setMovie(this);
+
+		return batchMovy;
+	}
+
+	public BatchMovie removeBatchMovy(BatchMovie batchMovy) {
+		getBatchMovies().remove(batchMovy);
+		batchMovy.setMovie(null);
+
+		return batchMovy;
 	}
 
 }

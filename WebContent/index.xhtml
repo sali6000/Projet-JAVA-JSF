@@ -10,6 +10,19 @@
 	<ui:define name="content">
 <br />
 <br />
+<p> Welcom to </p>
+<h:outputText value="#{indexBean.country}"/>
+<br /><br />
+
+<ul>
+    <ui:repeat value="#{indexBean.countries}" var="book">
+        <li>
+            <h:outputText value="#{book.name}"/>
+        </li>
+    </ui:repeat>
+</ul>
+
+
 	</ui:define>
 </ui:composition>
 </html>

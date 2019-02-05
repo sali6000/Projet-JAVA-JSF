@@ -13,13 +13,18 @@
 	</application>    
 	
 	<managed-bean>
-		<managed-bean-name>user</managed-bean-name>
-		<managed-bean-class>com.og.model.User</managed-bean-class>
+		<managed-bean-name>city</managed-bean-name>
+		<managed-bean-class>com.og.model.City</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
-		
 		<managed-property>
 			<property-name>name</property-name>
-			<value>anonymous</value>
+			<value>noname</value>
 		</managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>country</managed-bean-name>
+		<managed-bean-class>com.og.model.Country</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 </faces-config>
