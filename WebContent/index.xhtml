@@ -22,7 +22,11 @@
     </ui:repeat>
 </ul>
 
-
+<ul>
+    <ui:repeat value="#{indexBean.movies}" var="book">
+            <h:graphicImage library="images" name="#{book.image}" />
+    </ui:repeat>
+</ul>
 	</ui:define>
 </ui:composition>
 </html>
