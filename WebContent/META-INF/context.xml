@@ -1,5 +1,6 @@
 <Context path="/locationMovies" docBase="locationMovies" reloadable="true"
 crossContext="true">
+
 <!-- maxActive: Maximum number of dB connections in pool. Make sure you
 configure your mysqld max_connections large enough to handle
 all of your db connections. Set to -1 for no limit.
