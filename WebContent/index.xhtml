@@ -15,23 +15,33 @@
 			<br /><br />
 			
 			<div class="titlePresentationMovie">
-				<h:outputText value="DERNIERS AJOUTS"/>
+				<h:outputText value="LES OFFRES SPECIALES"/>
 			</div>			 
 			<!-- Afficher la liste de films présents dan la DB via la class indexBean -->
 			<div class="presentationMovie">
     			<ui:repeat value="#{indexBean.movies}" var="movie">
-    				<img src="/images/#{movie.image}" class="imgMovie"/>
+    				<h:graphicImage value="../images/#{movie.image}" styleClass="imgMovie" />
     			</ui:repeat>
     		</div>
     		<br /><br />
 			
 			<div class="titlePresentationMovie">
+				<h:outputText value="LES DERNIERS AJOUTS"/>
+			</div>			 
+			<!-- Afficher la liste de films présents dan la DB via la class indexBean -->
+			<div class="presentationMovie">
+    			<ui:repeat value="#{indexBean.movies}" var="movie">
+    				<h:graphicImage value="../images/#{movie.image}" styleClass="imgMovie" />
+    			</ui:repeat>
+    		</div>
+    		
+    		<div class="titlePresentationMovie">
 				<h:outputText value="LES PLUS LOUÉS"/>
 			</div>			 
 			<!-- Afficher la liste de films présents dan la DB via la class indexBean -->
 			<div class="presentationMovie">
     			<ui:repeat value="#{indexBean.movies}" var="movie">
-    				<img src="/images/#{movie.image}" class="imgMovie"/>
+    				<h:graphicImage value="../images/#{movie.image}" styleClass="imgMovie" />
     			</ui:repeat>
     		</div>
     		
