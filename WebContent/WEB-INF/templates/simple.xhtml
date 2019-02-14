@@ -13,12 +13,10 @@
 	</h:head>
 
 	<h:body>
-	<div class="p-3 mb-2 bg-secondary text-white">
 		<div id="container">
 			<div id="header">
 				<ui:insert name="header">
 					<div class="navbar navbar-inverse navbar-fixed-top">
-						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
 								<li><h:link value ="Menu principal" outcome="/index.xhtml" /></li>
 								<li><h:link value ="Menu1" outcome="/index.xhtml" /></li>
@@ -26,12 +24,12 @@
 								<li><h:link value ="Menu3" outcome="/index.xhtml" /></li>
 								<li><h:link value ="Menu4" outcome="/index.xhtml" /></li>
 							</ul>
-						</div>
 					</div>
 					<br />
 					<br />
 					<br />
 					<h1>#{bundle['application.defaultpage.header.content']}</h1>
+					<br />
 				</ui:insert>
 			</div>
 			<div id="content">
@@ -44,7 +42,6 @@
 					#{bundle['application.defaultpage.footer.content']}
 				</ui:insert>
 			</div>
-		</div>
 		</div>
 	</h:body>
 </html>

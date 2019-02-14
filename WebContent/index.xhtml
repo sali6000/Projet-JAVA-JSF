@@ -1,30 +1,39 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
 	<ui:composition template="/WEB-INF/templates/simple.xhtml">
 		<ui:define name="title">#{bundle['application.welcomepage.title']}</ui:define>
-		<ui:define name="content">
+		<ui:define name="content">		
 			<br /><br />
-			<p> Welcom to </p>
-			<h:outputText value="#{indexBean.country}"/>
-			<br /><br />
-			<ul>
-    			<ui:repeat value="#{indexBean.countries}" var="book">
-        			<li>
-            			<h:outputText value="#{book.name}"/>
-        			</li>
-    			</ui:repeat>
-			</ul>
 			
+			<div class="presentationContext">
+				<h:outputText value="#{bundle['application.welcomepage.context.explain']}" />
+			</div>	
+			<br /><br />
+			
+			<div class="titlePresentationMovie">
+				<h:outputText value="DERNIERS AJOUTS"/>
+			</div>			 
 			<!-- Afficher la liste de films présents dan la DB via la class indexBean -->
-			<div id="presentationMovie">
-    			<ui:repeat value="#{indexBean.movies}" var="book">
-    				<img src="/images/#{book.image}" class="imgMovie"/>
+			<div class="presentationMovie">
+    			<ui:repeat value="#{indexBean.movies}" var="movie">
+    				<img src="/images/#{movie.image}" class="imgMovie"/>
     			</ui:repeat>
     		</div>
-    		<br/>
+    		<br /><br />
+			
+			<div class="titlePresentationMovie">
+				<h:outputText value="LES PLUS LOUÉS"/>
+			</div>			 
+			<!-- Afficher la liste de films présents dan la DB via la class indexBean -->
+			<div class="presentationMovie">
+    			<ui:repeat value="#{indexBean.movies}" var="movie">
+    				<img src="/images/#{movie.image}" class="imgMovie"/>
+    			</ui:repeat>
+    		</div>
     		
     		<h:form enctype="multipart/form-data" prependId="false">
     			<h:outputText value="Sélectionnez un fichier" />

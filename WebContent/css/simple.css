@@ -6,6 +6,7 @@ padding:0;
 body {
 background-color:#2f354f;
 color:lightgrey;
+display: block;
 }
 #container {
 width:100%;
@@ -32,18 +33,32 @@ font-weight: bold;
 color: red;
 }
 
-<!-- PERSONNALISATION DIVERS -->
+/* PERSONNALISATIONs DIVERS */
 
-#presentationMovie
+.presentationMovie
 {
-	text-align:center;
-	background-color:green;
+	padding-left: 10%;
+  	padding-right: 10%;
 }
 
 .imgMovie
 {
 	height:200px;
 	width:auto;
-	margin-left:10px;
-	margin-bottom:10px;
+	margin-left:5px;
+	margin-bottom:5px;
+}
+
+.titlePresentationMovie
+{
+	text-align:center;
+	font-size:1.875em;
+	color: lightgrey;
+	font-weight:bold;
+}
+
+.presentationContext
+{
+	text-align:center;
+	font-size:1.075em;
 }
