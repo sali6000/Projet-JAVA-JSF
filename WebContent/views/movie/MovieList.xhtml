@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<ui:composition template="/WEB-INF/templates/simple.xhtml">
+	<ui:define name="title">#{bundle['application.welcomepage.title']}</ui:define>
+	<ui:define name="content">
+	    <br /><br />
+	    <div class="presentation">
+	    <br /><br />
+		<div class="titlePresentationMovie">
+			<h:outputText value="TOUS LES FILMS"/>
+		</div>			 
+		<br />
+		<div class="presentationContext">
+			<h:outputText value="Commençant par: "/>
+		</div>
+		<br />
+			<div class="prefixMovies">
+				<h:form>
+    				<ui:repeat value="#{movieListBean.prefixMovies}" var="letter">
+    					<h:commandLink action="#{movieDetailBean.movieDetail}">
+    						<h:button value="#{letter}" type="submit" outcome="/index" styleClass="btn btn-info"/>
+    						<f:param name="id" value="#{movie.movie_Id}" />
+    					</h:commandLink> 
+    				</ui:repeat>
+    			</h:form>
+    		</div>
+    		
+    		<br /><br />
+		
+		
+		<div class="presentationMovie">
+			<h:form>
+    			<ui:repeat value="#{movieListBean.movies}" var="movie">
+    				<h:commandLink action="#{movieDetailBean.movieDetail}">
+    					<h:graphicImage value="/../images/#{movie.image}" styleClass="imgMovie" />
+    					<f:param name="id" value="#{movie.movie_Id}" />
+    				</h:commandLink> 
+    			</ui:repeat>
+    		</h:form>
+    	</div>
+    	<br /><br />
+    	</div>
+	</ui:define>
+</ui:composition>
+</html>

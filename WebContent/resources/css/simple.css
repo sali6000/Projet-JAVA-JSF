@@ -4,15 +4,18 @@ padding:0;
 }
 
 body {
-background-color:#2f354f;
+background-image:url(/locationMovies/resources/images/background.jpg);
+background-attachment:fixed;
 color:lightgrey;
 display: block;
 }
+
 #container {
 width:100%;
 }
 #header {
 background-color:#1e5e73;
+opacity:0.85;
 }
 #header h1 {
 margin-bottom: 0px;
@@ -35,12 +38,18 @@ color: red;
 
 /* PERSONNALISATIONs DIVERS */
 
-.presentationMovie
+/* CENTRER CONTENU DIV */
+
+.presentation
 {
-	padding-left: 10%;
-  	padding-right: 10%;
+	background-color:#2f354f;
+	margin-right:10%;
+	margin-left:10%;
+	padding-left:1%;
+	padding-right:1%;
 }
 
+/* IMAGE FILM*/
 .imgMovie
 {
 	height:200px;
@@ -49,6 +58,7 @@ color: red;
 	margin-bottom:5px;
 }
 
+/*  */
 .titlePresentationMovie
 {
 	text-align:center;
@@ -61,4 +71,17 @@ color: red;
 {
 	text-align:center;
 	font-size:1.075em;
+}
+
+.positionButton
+{
+	margin-left:10px;
+	margin-right:10px;
+	width:150px;
+}
+
+.prefixMovies
+{
+	text-align:center;
+	letter-spacing:1em;
 }

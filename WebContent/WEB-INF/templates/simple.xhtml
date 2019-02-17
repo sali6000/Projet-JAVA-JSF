@@ -9,7 +9,7 @@
 	<h:head>
 		<title><ui:insert name="title">#{bundle['application.defaultpage.title']}</ui:insert></title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-		<link href="#{request.contextPath}/css/simple.css" rel="stylesheet" type="text/css"/>
+		<h:outputStylesheet library="css" name="simple.css"  />
 	</h:head>
 
 	<h:body>
@@ -18,9 +18,9 @@
 				<ui:insert name="header">
 					<div class="navbar navbar-inverse navbar-fixed-top">
 							<ul class="nav navbar-nav">
-								<li><h:link value ="Menu principal" outcome="/index.xhtml" /></li>
-								<li><h:link value ="Menu1" outcome="/index.xhtml" /></li>
-								<li><h:link value ="Menu2" outcome="/index.xhtml" /></li>
+								<li><h:link value ="Menu principal" outcome="/index" /></li>
+								<li><h:link value ="Voir tous les films" outcome="/views/movie/MovieList.xhtml" /></li>
+								<li><h:link value ="Menu2" outcome="/index.html" /></li>
 								<li><h:link value ="Menu3" outcome="/index.xhtml" /></li>
 								<li><h:link value ="Menu4" outcome="/index.xhtml" /></li>
 							</ul>
@@ -34,7 +34,6 @@
 			</div>
 			<div id="content">
 				<ui:insert name="content">
-					#{bundle['application.defaultpage.body.content']}
 				</ui:insert>
 			</div>
 			<div id="footer">

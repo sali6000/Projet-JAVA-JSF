@@ -1,7 +1,10 @@
 package com.og.managedbean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.apache.log4j.Logger;
@@ -10,11 +13,13 @@ import com.og.model.Movie;
 
 @Named
 @SessionScoped
-public class IndexBean implements Serializable
+public class MovieListBean implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(this.getClass());
 	private List<Movie> movies;
+	private List<Character> prefixMovies;
+		
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<Movie> getMovies()
@@ -24,8 +29,14 @@ public class IndexBean implements Serializable
 		return this.movies;
 	}
 	
-	public String returnMenu()
+	public List<Character> getPrefixMovies()
 	{
-		return "../index.xhtml";
+		prefixMovies = new ArrayList<Character>();
+		
+		for(Character c : "#ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray())
+		{
+			prefixMovies.add(c);
+		}
+		return this.prefixMovies;
 	}
 }
