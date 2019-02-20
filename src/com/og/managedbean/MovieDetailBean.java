@@ -29,6 +29,7 @@ public class MovieDetailBean implements Serializable
 	{
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		this.id = Integer.parseInt(request.getParameter("id"));
+		System.out.println(this.id+" est l'id reçu en parametre");
 		EntityFinder ef = new EntityFinder();
 		this.movie = ((Movie)ef.findOne(Movie.class,this.id));
 		return "/views/movie/MovieDetail.xhtml";
@@ -38,6 +39,10 @@ public class MovieDetailBean implements Serializable
 	public int getId()
 	{
 		return this.id;
+	}
+	public void setId(int id)
+	{
+		this.id = id;
 	}
 	
 	public Movie getMovie()

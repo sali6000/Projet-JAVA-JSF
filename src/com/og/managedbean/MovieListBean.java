@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.apache.log4j.Logger;
@@ -17,8 +18,8 @@ public class MovieListBean implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(this.getClass());
-	private List<Movie> movies;
 	private List<Character> prefixMovies;
+	private List<Movie> movies;
 		
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

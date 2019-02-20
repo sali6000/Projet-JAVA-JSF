@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:composition template="/WEB-INF/templates/simple.xhtml">
+	<ui:define name="title">#{bundle['application.welcomepage.title']}</ui:define>
+	<ui:define name="content">
+	    <br /><br />
+	    <div class="presentation">
+	    	<br /><br />
+				<h:form id="form">
+					<div class="titlePresentationMovie">
+						<h:outputText id="output" value="#{movieSearchBean.result}" />
+						<br /><br />
+						<h:outputText value="Rechercher un film"/>
+						<br />
+						<h:outputText value="Par titre: "/>
+						<h:inputText id="search" value="#{movieSearchBean.searchString}" valueChangeListener="#{movieSearchBean.searchStringValueChanged}">
+							<f:ajax execute="search" render="output" event="keyup" />
+						</h:inputText>
+						<h:commandButton value="Afficher le lien" styleClass="btn btn-info"></h:commandButton>
+						<br /><br />
+						</div>
+						<h:dataTable value="#{movieSearchBean.moviesMatch}" var = "movie" headerClass="movieTableCol" rowClasses="movieTableCol">
+							<h:column styleClass="movieTableCol">
+								<br/>
+								<h:outputText value="#{movie.title}"/>
+								<br />
+								<h:graphicImage value="/../images/#{movie.image}" styleClass="imgMovie" />
+								<br />
+								<h:commandLink action="#{movieDetailBean.movieDetail}">
+									<h:outputText value="Voir le film"/>
+									<f:param name="id" value="#{movie.movie_Id}" />
+								</h:commandLink>
+								<br /><br />
+							</h:column>
+							<h:column>
+								<h:outputText value="#{movie.summarize}"/>
+								<br /><br />
+							</h:column>
+						</h:dataTable>
+				</h:form>
+			<br /><br /><br />
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

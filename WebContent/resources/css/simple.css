@@ -85,3 +85,9 @@ color: red;
 	text-align:center;
 	letter-spacing:1em;
 }
+.movieTableCol
+{
+	padding-left:20px;
+	padding-right:20px;
+	text-align:center;
+}
