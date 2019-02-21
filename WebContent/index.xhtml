@@ -5,6 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<f:view locale="#{userDataBean.locale}">
 	<ui:composition template="/WEB-INF/templates/simple.xhtml">
 		<ui:define name="title">#{bundle['application.welcomepage.title']}</ui:define>
 		<ui:define name="content">		
@@ -61,4 +62,5 @@
     		</div>
 		</ui:define>
 	</ui:composition>
+	</f:view>
 </html>

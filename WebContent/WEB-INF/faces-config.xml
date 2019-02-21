@@ -6,25 +6,14 @@
     version="2.2">
  
 	<application>
+		<locale-config>
+			<default-locale>fr</default-locale>
+			<supported-locale>en</supported-locale>
+		</locale-config>
+	
 		<resource-bundle>
 			<base-name>com.og.properties.messages</base-name>
 			<var>bundle</var>
 		</resource-bundle>
 	</application>    
-	
-	<managed-bean>
-		<managed-bean-name>city</managed-bean-name>
-		<managed-bean-class>com.og.model.City</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-		<managed-property>
-			<property-name>name</property-name>
-			<value>noname</value>
-		</managed-property>
-	</managed-bean>
-	
-	<managed-bean>
-		<managed-bean-name>country</managed-bean-name>
-		<managed-bean-class>com.og.model.Country</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
 </faces-config>

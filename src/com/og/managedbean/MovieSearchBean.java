@@ -50,8 +50,11 @@ public class MovieSearchBean implements Serializable
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void searchByTitle(String searchTitle)
 	{
-		EntityFinder ef = new EntityFinder();
-		this.moviesFromDB = ((List<Movie>) ef.findAll(Movie.class, Movie.class.getName().substring(13)));
+		if(this.moviesFromDB == null)
+		{
+			EntityFinder ef = new EntityFinder();
+			this.moviesFromDB = ((List<Movie>) ef.findAll(Movie.class, Movie.class.getName().substring(13)));
+		}
 		this.moviesMatch = new ArrayList<Movie>();
 		int i = 0;
 		// Vérifier parmis la list de films si un film correspond à l'entrée ajax
