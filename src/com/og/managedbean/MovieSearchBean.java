@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
@@ -12,7 +13,7 @@ import com.og.dao.EntityFinder;
 import com.og.model.Movie;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class MovieSearchBean implements Serializable 
 {
 	private static final long serialVersionUID = 1L;

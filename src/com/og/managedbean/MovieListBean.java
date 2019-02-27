@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -16,7 +17,7 @@ import com.og.dao.EntityFinder;
 import com.og.model.Movie;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class MovieListBean implements Serializable
 {
 	private static final long serialVersionUID = 1L;

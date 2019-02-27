@@ -8,36 +8,52 @@
 
 	<h:head>
 		<title><ui:insert name="title">#{bundle['application.defaultpage.title']}</ui:insert></title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<h:outputStylesheet library="css" name="bootstrap.css"  />
 		<h:outputStylesheet library="css" name="simple.css"  />
+		<h:outputScript library="js" name="bootstrap.js" />
 	</h:head>
-
+	
 	<h:body>
 		<div id="container">
 			<div id="header">
 				<ui:insert name="header">
-					<div class="navbar navbar-inverse navbar-fixed-top">
-						<ul class="nav navbar-nav">
-							<li><h:link value ="Menu principal" outcome="/index" /></li>
-							<li><h:link value ="Voir tous les films" outcome="/views/movie/MovieList.xhtml" /></li>
-							<li><h:link value ="Effectuer une recherche" outcome="/views/movie/MovieSearch.xhtml" /></li>
-							<li><h:link value ="Ajouter un film" outcome="/views/movie/MovieAdd.xhtml" /></li>
-							<li><h:link value ="Menu4" outcome="/index.xhtml" /></li>
-							<li>
-								<h:form>
-									<h:selectOneMenu value = "#{userDataBean.locale}" onchange = "submit()" valueChangeListener="#{userDataBean.localeChanged}">
-           								<f:selectItems value = "#{userDataBean.countries}" />
-               						</h:selectOneMenu>
-               					</h:form>
-							</li>
-						</ul>
-					</div>
-					<br />
-					<br />
-					<br />
-					<h1>#{bundle['application.defaultpage.header.content']}</h1>
-					<br />
+			    
+			    <h:form styleClass="navbar navbar-expand-lg navbar-dark bg-dark">
+			    
+					<h:link styleClass="navbar-brand" value="MoviesLocation" outcome="/index" />
+					
+					<h:commandLink styleClass="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    					<h:outputText styleClass="navbar-toggler-icon" />
+  					</h:commandLink>
+  					
+  					<div class="collapse navbar-collapse" id="navbarColor02">
+  						<ul class="navbar-nav mr-auto">
+  							<li class="nav-item active">
+        						<h:link styleClass="nav-link" value="Menu principal" outcome="/index"><span class="sr-only">(current)</span></h:link>
+        					</li>  			
+  							<li class="nav-item">
+        						<h:link styleClass="nav-link" value="Voir tous les films" outcome="/views/movie/MovieList"><span class="sr-only">(current)</span></h:link>
+        					</li>
+        					<li class="nav-item">
+        						<h:link styleClass="nav-link" value="Effectuer une recherche" outcome="/views/movie/MovieSearch" />
+        					</li>
+        					<li class="nav-item">
+        						<h:link styleClass="nav-link" value="Ajouter un film" outcome="/views/movie/MovieAdd.xhtml" />
+        					</li>
+        				</ul>
+        				<h:form>
+        					<h:selectOneMenu value = "#{userDataBean.locale}" onchange = "submit()" valueChangeListener="#{userDataBean.localeChanged}">
+        						<f:selectItems value = "#{userDataBean.countries}" />
+        					</h:selectOneMenu>
+               			</h:form>
+        			</div>
+    			</h:form>
+				<br />
+				<br />
+				<h1>#{bundle['application.defaultpage.header.content']}</h1>
+				<br />
 				</ui:insert>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			</div>
 			<div id="content">
 				<ui:insert name="content">

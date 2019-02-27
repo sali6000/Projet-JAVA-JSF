@@ -4,8 +4,6 @@ padding:0;
 }
 
 body {
-background-image:url(/locationMovies/resources/images/background.jpg);
-background-attachment:fixed;
 color:lightgrey;
 display: block;
 }
@@ -24,6 +22,7 @@ text-align:center;
 #content {
 float:left;
 width:100%;
+background-color:#131417;
 }
 
 #footer {
@@ -42,7 +41,6 @@ color: red;
 
 .presentation
 {
-	background-color:#2f354f;
 	margin-right:10%;
 	margin-left:10%;
 	padding-left:1%;
