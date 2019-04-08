@@ -19,6 +19,7 @@ public class IndexBean implements Serializable
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<Movie> getMovies()
 	{
+		System.out.println(System.getProperty("catalina.base"));
 		EntityFinder ef = new EntityFinder();
 		this.movies = ((List<Movie>) ef.findAll(Movie.class, Movie.class.getName().substring(13)));
 		return this.movies;

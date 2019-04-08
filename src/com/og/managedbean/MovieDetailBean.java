@@ -31,8 +31,7 @@ public class MovieDetailBean implements Serializable
 		this.id = Integer.parseInt(request.getParameter("id"));
 		EntityFinder ef = new EntityFinder();
 		this.movie = ((Movie)ef.findOne(Movie.class,this.id));
-		return "/views/movie/MovieDetail.xhtml";
-		
+		return "/views/movie/MovieDetail.xhtml?faces-redirect=true";
 	}
 	
 	public int getId()

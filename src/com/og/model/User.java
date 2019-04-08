@@ -22,7 +22,7 @@ public class User implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Date birthdate;
-
+	
 	private String email;
 
 	private String firstname;

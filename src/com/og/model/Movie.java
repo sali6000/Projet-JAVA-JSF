@@ -32,7 +32,7 @@ public class Movie implements Serializable {
 	private String title;
 
 	//bi-directional many-to-one association to CountryMovie
-	@OneToMany(mappedBy="movie")
+	@OneToMany(mappedBy="movie", cascade = CascadeType.PERSIST)
 	private List<CountryMovie> countryMovies;
 
 	//bi-directional many-to-one association to Peggi
@@ -46,11 +46,11 @@ public class Movie implements Serializable {
 	private Year year;
 
 	//bi-directional many-to-one association to MovieAuthor
-	@OneToMany(mappedBy="movie")
+	@OneToMany(mappedBy="movie", cascade = CascadeType.PERSIST)
 	private List<MovieAuthor> movieAuthors;
 
 	//bi-directional many-to-one association to MovieCategory
-	@OneToMany(mappedBy="movie")
+	@OneToMany(mappedBy="movie", cascade = CascadeType.PERSIST)
 	private List<MovieCategory> movieCategories;
 
 	//bi-directional many-to-one association to RentMovie

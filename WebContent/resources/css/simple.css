@@ -65,6 +65,13 @@ color: red;
 	font-weight:bold;
 }
 
+.containtPresentationAlign
+{
+	text-align:center;
+	font-size:1.0em;
+	font-weight:bold;
+}
+
 .presentationContext
 {
 	text-align:center;
@@ -94,4 +101,37 @@ color: red;
 {
 	color:#004080;
 	margin-right: 12px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.row-bordered {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #ccc;
+  margin: 0 15px;
+}
+.dropdownSize
+{
+	height: 100px;
+}
+
+.paddingRight
+{
+	padding-right: 50px;
+	margin-right:50px;
+	weidth:50px;
 }
