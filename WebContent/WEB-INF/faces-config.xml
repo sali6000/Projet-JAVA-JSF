@@ -15,5 +15,5 @@
 			<base-name>com.og.properties.messages</base-name>
 			<var>bundle</var>
 		</resource-bundle>
-	</application>    
+	</application>  
 </faces-config>

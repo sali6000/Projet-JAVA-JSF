@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import com.og.connection.EMF;
+import com.og.model.Movie;
 import com.og.service.ServiceGeneric;
 
 import org.apache.log4j.Logger;
@@ -63,5 +64,42 @@ public class EntityFinder<T>
 	        em.close();
 	    }
 		return entities;
+	}
+	/*
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void addOne(T t)
+	{
+		EntityManager em = EMF.getEM();
+		try 
+		{
+			ServiceGeneric service = new ServiceGeneric(em);
+			em.getTransaction().begin();
+			service.Create(t);
+			em.getTransaction().commit();
+		}
+		finally
+		{
+			em.clear();
+			em.close();
+		}
+	}
+*/
+	@SuppressWarnings({ "rawtypes", "rawtypes" })
+	public void addOne(T movie) 
+	{
+		EntityManager em = EMF.getEM();
+		try 
+		{
+			ServiceGeneric<T> service = new ServiceGeneric<T>(em);
+			em.getTransaction().begin();
+			service.Create(movie);
+			em.getTransaction().commit();
+		}
+		finally
+		{
+			em.clear();
+			em.close();
+		}
+		
 	}
 }

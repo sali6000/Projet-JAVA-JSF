@@ -18,28 +18,32 @@ public class UploadBean implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(this.getClass());
+	private String filename;
 	
-	// Pour utiliser le "Part", clique droit sur le projet=> build path => configure build path -> project facets et changer java 1.6 en 1.7
-	private Part uploadedFile;
-	
-	// Pour uploader un fichier
-	public Part getUploadedFile()
-	{
-		return uploadedFile;
+
+	public String getFilename() {
+		return filename;
 	}
-	
-	public void setUploadedFile(Part uploadedFile)
+
+
+	public void setFilename(String filename) 
 	{
-		this.uploadedFile = uploadedFile;
+		this.filename = filename;
 	}
-	
-	public void saveFile()
+
+	public void saveFile(String repository, Part uploadedFile)
 	{
 		try(InputStream input = uploadedFile.getInputStream())
 		{
-			String filename = uploadedFile.getSubmittedFileName();
-			if(filename.contains(".jpg")) // voir http://www.vogella.com/tutorials/JavaRegularExpressions/article.html
-			Files.copy(input, new File("C:\\Users\\User\\Desktop\\Bureau1\\Textes - PDF - PowerPoint\\CV + lettre passe partouts",filename).toPath());
+			this.filename = uploadedFile.getSubmittedFileName();
+			if(this.filename.contains(".jpg"))// voir http://www.vogella.com/tutorials/JavaRegularExpressions/article.html
+			{
+				Files.copy(input, new File(System.getProperty("catalina.base").toString()+repository,filename).toPath());
+			}
+			else
+			{
+				this.filename = "";
+			}
 		}
 		catch(IOException ex)
 		{

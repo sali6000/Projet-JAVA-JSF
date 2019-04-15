@@ -25,6 +25,7 @@ public class MovieListBean implements Serializable
 	private List<Character> prefixMovies;
 	private List<Movie> movies;
 	private char letterFilter = '*';
+	private List<Movie> moviesFilter;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String filter()

@@ -10,6 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
 
+import com.og.model.Movie;
+
 public class ServiceGeneric<T>
 {
 	// PROPERTIE

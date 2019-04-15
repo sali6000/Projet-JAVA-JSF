@@ -11,9 +11,11 @@
 		<ui:define name="content">		
 		<br /><br />
 			<div class="presentation">
-			<br /><br /><br />
+			<br />
 			<div class="presentationContext ">
-				<h:outputText value="#{bundle['application.welcomepage.context.explain']}" />
+			<div class="row row-bordered"><div class="col-xs-10"></div></div><br /><br />
+				<h:outputText value="#{bundle['application.welcomepage.context.explain']}" /><br /><br />
+				<br /><div class="row row-bordered"><div class="col-xs-10"></div></div><br />
 			</div>	
 			<br /><br /><br />
 			
@@ -54,11 +56,7 @@
     			</ui:repeat>
     		</div>
     		
-    		<h:form enctype="multipart/form-data" prependId="false">
-    			<h:outputText value="Sélectionnez un fichier" />
-    			<h:inputFile value="#{uploadBean.uploadedFile}" />
-    			<h:commandButton value="Uploader" type="submit" action="#{uploadBean.saveFile}" style="color: red;" />
-    		</h:form>
+
     		</div>
 		</ui:define>
 	</ui:composition>

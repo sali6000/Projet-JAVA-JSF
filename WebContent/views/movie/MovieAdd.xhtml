@@ -4,20 +4,242 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
 	<f:view locale="#{userDataBean.locale}">
-
+	<!-- TEMPLATE -->
 	<ui:composition template="/WEB-INF/templates/simple.xhtml">
 	<ui:define name="title">#{bundle['application.welcomepage.title']}</ui:define>
 	<ui:define name="content">
-	    <br /><br />
+		<!-- PRESENTATION -->
 	    <div class="presentation">
-	    	<br /><br />
-					<div class="titlePresentationMovie">
-						<h:outputText value="#{bundle['movie.add.title']}"/>
-						<br />
+			<div class="titlePresentationMovie">
+				<br /><h:outputText value="#{bundle['movie.add.title']}"/><br /><br /><br />
+			</div>
+			<div class="container">
+  				<div class="row">
+   					<div class="col-sm containtPresentationAlign">
+   	  					<div class="presentation titlePresentationMovie">
+								<h:outputText value="Changements" />
+								<br />
 						</div>
-			<br /><br /><br />
+						<br /><div class="row row-bordered"><div class="col-xs-10"></div></div><br />
+   						
+   						<!-- FORM 1 -->
+   						<!-- ATTRIBUER LES DETAILLES -->
+   						<h:form rendered="#{movieAddBean.formNumber == 0}">
+   						<div class="presentation titlePresentationMovie">
+								<h:outputText value="Appartenances" />
+								<br /><br />
+						</div>
+   							<strong>( * = Si aucune proposition ne correspond parmis les choix suivants, veuillez en ajouter une nouvelle via le bouton suivant)</strong>
+   							<br /><br />
+   							<h:commandButton styleClass="btn btn-warning" value="Effectuer un ajout" action="MovieAddAbout"/>
+   							<br /><br />
+    					</h:form>
+
+<!--///////////////////////////////////////////////////////// FORM 1 ////////////////////////////////////////////////////////////////-->
+						<h:form rendered="#{movieAddBean.formNumber == 0}">
+							<div class="form-group">
+    							<br />
+								<h:outputText value="* Auteurs/Réalisateurs: "/><br /><br />
+   								<h:selectManyCheckbox styleClass="custom-control custom-switch" value="#{movieAddBean.authorsSelected}" required="true">
+   									<f:selectItems value="#{movieAddBean.authors}" />
+   								</h:selectManyCheckbox>
+   							</div>
+    						<br />
+    						
+    						<div class="form-group">
+								<h:outputText value="* Catégorie: "/><br /><br />
+   								<h:selectManyCheckbox styleClass="custom-control custom-switch" value="#{movieAddBean.cathegoriesSelected}" required="true">
+   									<f:selectItems value="#{movieAddBean.cathegories}" />
+   								</h:selectManyCheckbox>
+   							</div>
+    						<br />
+    						
+    						<div class="form-group">
+								<h:outputText value="* Appartenance à un lot: "/><br /><br />
+   								<h:selectManyCheckbox styleClass="custom-control custom-switch" value="#{movieAddBean.batchesSelected}">
+   									<f:selectItems value="#{movieAddBean.batches}" />
+   								</h:selectManyCheckbox>
+   							</div>
+    						<br />
+   						
+   							<!-- AJOUTER DES PAYS -->	
+   							<div class="form-group">
+								<h:outputText value="* Pays de réalisation: "/><br /><br />
+   								<h:selectManyCheckbox styleClass="custom-control custom-switch" value="#{movieAddBean.countriesSelected}" required="true">
+   									<f:selectItems value="#{movieAddBean.countries}" />
+   								</h:selectManyCheckbox>
+   							</div>
+    						<br />
+    						
+    						<!-- AJOUTER UNE INTERDICTION -->	
+   							<div class="form-group">
+								<h:outputText value="* Année et accessibilité"/><br /><br />
+								<h:selectOneListbox  styleClass="dropdownSize" value="#{movieAddBean.yearSelected}" required="true">
+   									<f:selectItems value="#{movieAddBean.years}" />
+   								</h:selectOneListbox><h:outputText value=" " />
+   								<h:selectOneListbox styleClass="dropdownSize" value="#{movieAddBean.peggiSelected}" required="true">
+   									<f:selectItems value="#{movieAddBean.peggies}" />
+   								</h:selectOneListbox>
+   							</div>
+    						<br />
+    						<!-- BOUTON VALIDER -->
+    						<div class="col-sm"><h:commandButton styleClass="btn btn-outline-success" value="Valider les changements" action="#{movieAddBean.nextForm(1)}"/></div>
+						</h:form>
+						
+<!--///////////////////////////////////////////////////////// FORM 2 ////////////////////////////////////////////////////////////////-->
+						<!-- AJOUTER UNE IMAGE -->
+    					<h:form rendered="#{movieAddBean.formNumber == 1}" enctype="multipart/form-data" prependId="false">
+    						<div class="presentation titlePresentationMovie">
+								<h:outputText value="Image" />
+								<br /><br />
+							</div>
+    						<div class="col-sm">
+    							<h:inputFile value="#{movieAddBean.uploadedFile}" styleClass="btn btn-secondary" required="true"/>
+    							<br /><br />
+    							<h:commandButton styleClass="btn btn-success" value="Uploader" action="#{movieAddBean.saveImage}" />
+    							<br />
+    						</div>
+    					</h:form>
+<!--///////////////////////////////////////////////////////// FORM 3 ////////////////////////////////////////////////////////////////-->
+    					<!-- FORM 3 -->
+    					<!-- AJOUTER UN TITRE -->
+	   	  				<h:form rendered="#{movieAddBean.formNumber == 2}">
+	   	  					<div class="presentation titlePresentationMovie">
+								<h:outputText value="Description" />
+								<br /><br />
+							</div>
+	   	  					<div class="form-group">
+								<h:outputText value="Titre: "/><br /><br />
+								<h:inputText styleClass="form-control" value="#{movieAddBean.movie.title}" a:placeholder="Matrix" required="true">
+									<f:validateLength maximum="20" />
+								</h:inputText>
+							</div>
+							<br /><br />
+							
+							<!-- AJOUTER UN SYNOPSIS -->	
+							<div class="form-group">
+								<h:outputText value="Synopsis: "/><br /><br />
+								<h:inputTextarea styleClass="form-control" rows="3" value="#{movieAddBean.movie.summarize}" a:placeholder="Il était une fois..." required="true"/>
+							</div>
+    		  				<br /><br />   	
+    		  				
+    		  				<!-- AJOUTER UNE DUREE -->
+    		  				<div class="form-group">
+    		  					<h:outputText value="Durée: "/><br /><br />
+    		  					<div class="form-group">
+    		  						<div class="input-group mb-3">
+    									<div class="input-group-prepend">
+        									<span class="input-group-text">Minutes</span>
+      									</div>
+     						 			<h:inputText value="#{movieAddBean.movie.duration_Minute}" required="true" converterMessage="Veuillez entrer un nombre exemple 1.00" styleClass="form-control" aria-label="Amount (to the nearest dollar)"/>
+      									<div class="input-group-append">
+        									<span class="input-group-text">Exemple: 120</span>
+      									</div>
+   									</div>
+   								</div>
+   							</div>
+    		  					  	
+    		  				<!-- AJOUTER UN PRIX -->			
+    		  				<div class="form-group">
+    		  					<h:outputText value="Prix: "/><br /><br />
+    		  					<div class="form-group">
+    		  						<div class="input-group mb-3">
+    									<div class="input-group-prepend">
+        									<span class="input-group-text">€</span>
+      									</div>
+     						 			<h:inputText value="#{movieAddBean.movie.price}" required="true" converterMessage="Veuillez entrer un nombre exemple 1.00" styleClass="form-control" aria-label="Amount (to the nearest dollar)"/>
+      									<div class="input-group-append">
+        									<span class="input-group-text">Exemple: 1.50</span>
+      									</div>
+   									</div>
+   								</div>
+   							</div>
+   							<br />
+    					<!-- BOUTON VALIDER -->
+    		  	    	<div class="col-sm"><h:commandButton styleClass="btn btn-outline-success" value="Valider les changements" action="#{movieAddBean.nextForm(3)}"/></div>
+    		  			<br />
+    		  			</h:form>
+    		  			
+    		  			<!-- BOUTON RETOUR INDEX -->
+    		  			<h:form rendered="#{movieAddBean.formNumber == 4}">
+    		  				<div class="presentation titlePresentationMovie">
+								<h:outputText value="Film ajouter avec succès" />
+								<br /><br />
+							</div>
+    		  				<div class="col-sm"><h:commandButton styleClass="btn btn-outline-success" value="Retourner à la page d'acceuil" action="#{movieAddBean.backToIndex}"/></div>
+    		  			</h:form>
+    					
+    					<!-- BOUTON VALIDER -->
+    					<h:form rendered="#{movieAddBean.formNumber == 3}">
+    		  	    	<div class="col-sm"><h:commandButton styleClass="btn btn-outline-success" value="Confirmer l'ajout du film" action="#{movieAddBean.SaveMovie}"/></div>
+    		  			</h:form>
+    		  			<br />
+    		  			
+    		  			<!-- BOUTON REVENIR EN ARRIERE -->
+    		  			<h:form rendered="#{movieAddBean.formNumber gt 0 and (movieAddBean.formNumber lt 4)}">
+    		  				<h:commandButton styleClass="btn btn-outline-warning" value="Revenir en arrière" action="#{movieAddBean.backForm}"/>
+    		  				<br /><br />
+    					</h:form>
+    					
+    		  			<!-- BOUTON ANNULER -->	
+    		  			<h:form rendered="#{movieAddBean.formNumber gt 0 and (movieAddBean.formNumber lt 4)}">
+    		  				<h:commandButton styleClass="btn btn-outline-danger" value="Supprimer toutes modifications en cours" action="#{movieAddBean.reset}"/>
+    					</h:form>
+    					<br />
+					</div>
+					<div class="col-sm containtPresentationAlign"  >
+						<div class="presentation">
+							<div class="titlePresentationMovie">
+								<h:outputText value="Aperçu"/>
+							</div>
+						</div>
+						<br /><div class="row row-bordered"><div class="col-xs-10"></div></div><br />
+						<h:outputText value="(Après modification)" rendered="#{movieAddBean.cathegoriesSelected == null}"/>
+						
+						<!-- APERCU DES MODIFICATIONS -->
+						<h:form>	
+							<br />
+							<div class="col-sm"><h:outputText value="Image: " rendered="#{movieAddBean.movie.image != null}"/></div>
+							<div class="col-sm"><h:graphicImage value="/../images/#{movieAddBean.movie.image}"  rendered="#{movieAddBean.movie.image != null}" styleClass="imgMovie" /></div>
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Titre: " rendered="#{movieAddBean.movie.title != null}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.movie.title}" rendered="#{movieAddBean.movie.title != null}"/></div>
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Synopsis: " rendered="#{movieAddBean.movie.summarize != null}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.movie.summarize}" rendered="#{movieAddBean.movie.summarize != null}"/></div>
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Durée: " rendered="#{movieAddBean.movie.duration_Minute != 0}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.movie.duration_Minute}" rendered="#{movieAddBean.movie.duration_Minute != 0}"/></div>			
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Prix: " rendered="#{movieAddBean.movie.price != 0.0}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.movie.price}" rendered="#{movieAddBean.movie.price != 0.0}"/></div>
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Accessibilité: " rendered="#{movieAddBean.peggiSelected != null}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.peggiSelected}" rendered="#{movieAddBean.peggiSelected != null}"/></div>
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Auteurs/Réalisateur: " rendered="#{movieAddBean.authorsSelected != null}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.authorsInString}" rendered="#{movieAddBean.authorsSelected != null}"/></div>
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Catégorie: " rendered="#{movieAddBean.cathegoriesSelected != null}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.cathegoriesInString}" rendered="#{movieAddBean.cathegoriesSelected != null}"/></div>
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Appartenance à un lot: " rendered="#{movieAddBean.batchesSelected != null}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.batchesInString}" rendered="#{movieAddBean.batchesSelected != null}"/></div>
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Pays d'origine: " rendered="#{movieAddBean.countriesSelected != null}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.countriesInString}" rendered="#{movieAddBean.countriesSelected != null}"/></div>
+							<br /><br />
+							<div class="col-sm"><h:outputText value="Année de réalisation: " rendered="#{movieAddBean.yearSelected != 0}"/></div>
+							<div class="col-sm"><h:outputText value="#{movieAddBean.yearSelected}" rendered="#{movieAddBean.yearSelected != 0}"/></div>
+							<br /><br />
+						</h:form>
+					</div>
+	    		</div>
+    		</div>
 		</div>
 	</ui:define>
 </ui:composition>
